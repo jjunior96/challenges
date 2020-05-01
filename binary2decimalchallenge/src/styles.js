@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
-const Form = styled.form``;
+export const Form = styled.form``;
 
-export default Form;
+export const Error = styled.span`
+  font-size: 16px;
+  color: red;
+`;

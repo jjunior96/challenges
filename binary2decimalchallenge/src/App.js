@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
 
-import Form from './styles';
+import { Form, Error } from './styles';
 
 function App() {
   const [inputError, setInputError] = useState('');
   const [binaryNumber, setBinaryNumber] = useState('');
+  const [decimalNumber, setdecimalNumber] = useState('');
 
   function checkInput(e) {
     e.preventDefault();
+
     if (!/^[0-1]+$/.test(binaryNumber)) {
-      setInputError('Não é binário');
-      setBinaryNumber('');
-      return;
+      setInputError('You can only enter with 0 or 1');
+
+      return 0;
     }
-    console.log('ok');
+
+    const binaryArray = binaryNumber.split('');
+    const len = binaryNumber.length - 1;
+
+    setdecimalNumber(
+      binaryArray.reduce((acc, item, index) => {
+        return acc + Number(item) * 2 ** (len - index);
+      }, 0)
+    );
+
+    // "0|1|1"
+    // 0 1 2 (item * 2^((len-1) - index) + acumulador)
   }
 
   return (
@@ -26,7 +39,8 @@ function App() {
           placeholder="Digite um número binário"
         ></input>
       </label>
-      <input placeholder="Resultado"></input>
+      {inputError && <Error>{inputError}</Error>}
+      <input disabled value={decimalNumber}></input>
       <button onClick={checkInput} type="submit">
         Converter
       </button>
