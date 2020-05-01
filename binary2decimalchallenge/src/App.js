@@ -27,6 +27,8 @@ function App() {
 
     // "0|1|1"
     // 0 1 2 (item * 2^((len-1) - index) + acumulador)
+
+    return 0;
   }
 
   return (
