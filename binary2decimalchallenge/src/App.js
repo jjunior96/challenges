@@ -39,13 +39,13 @@ function App() {
         <Input
           value={binaryNumber}
           onChange={(e) => setBinaryNumber(e.target.value)}
-          placeholder="Digite um número binário"
+          placeholder="Enter with a binary number"
         ></Input>
       </label>
       {inputError && <Error>{inputError}</Error>}
       <Input disabled value={decimalNumber}></Input>
       <Button onClick={checkInput} type="submit">
-        Converter
+        Convert
       </Button>
     </FormWrapper>
   );
