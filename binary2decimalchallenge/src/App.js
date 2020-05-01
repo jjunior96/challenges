@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Form, Error } from './styles';
+import { FormWrapper, Error, Title, Input, Button } from './styles';
 
 function App() {
   const [inputError, setInputError] = useState('');
@@ -33,21 +33,21 @@ function App() {
   }
 
   return (
-    <Form>
+    <FormWrapper>
       <label>
-        Binary To Decimal
-        <input
+        <Title>Binary To Decimal</Title>
+        <Input
           value={binaryNumber}
           onChange={(e) => setBinaryNumber(e.target.value)}
           placeholder="Digite um número binário"
-        ></input>
+        ></Input>
       </label>
       {inputError && <Error>{inputError}</Error>}
-      <input disabled value={decimalNumber}></input>
-      <button onClick={checkInput} type="submit">
+      <Input disabled value={decimalNumber}></Input>
+      <Button onClick={checkInput} type="submit">
         Converter
-      </button>
-    </Form>
+      </Button>
+    </FormWrapper>
   );
 }
 
