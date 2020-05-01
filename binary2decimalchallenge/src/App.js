@@ -10,6 +10,7 @@ function App() {
   function checkInput(e) {
     e.preventDefault();
 
+    // Check if input contain only 0 or 1
     if (!/^[0-1]+$/.test(binaryNumber)) {
       setInputError('You can only enter with 0 or 1');
 
@@ -17,11 +18,11 @@ function App() {
     }
 
     const binaryArray = binaryNumber.split('');
-    const len = binaryNumber.length - 1;
+    const inputLength = binaryNumber.length - 1;
 
     setdecimalNumber(
-      binaryArray.reduce((acc, item, index) => {
-        return acc + Number(item) * 2 ** (len - index);
+      binaryArray.reduce((accumulator, item, index) => {
+        return accumulator + Number(item) * 2 ** (inputLength - index);
       }, 0)
     );
 
@@ -34,7 +35,7 @@ function App() {
   return (
     <Form>
       <label>
-        Binario:
+        Binary To Decimal
         <input
           value={binaryNumber}
           onChange={(e) => setBinaryNumber(e.target.value)}
